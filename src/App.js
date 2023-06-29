@@ -1,12 +1,23 @@
-import "./App.css";
+import styles from "./App.module.css";
 // import Button from "react-bootstrap/Button";
 import Navbar from "./components/NavBar";
+import Container from "react-bootstrap/Container";
+import { Route, Switch } from "react-router-dom";
+import './api/axiosDefaults';
 
 function App() {
   return (
-    <div className="App">
+    <div className={styles.App}>
       {/* <Button variant="primary">Primary</Button> */}
       <Navbar />
+      <Container className={styles.Main}>
+        <Switch>
+          <Route exact path="/" render={() => <h1>Home page</h1>} />
+          <Route exact path="/signin" render={() => <h1>Sign in</h1>} />
+          <Route exact path="/signup" render={() => <h1>Sign up</h1>} />
+          <Route render={() => <p>Page not found!</p>} />
+        </Switch>
+      </Container>
     </div>
   );
 }
